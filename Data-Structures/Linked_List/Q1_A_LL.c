@@ -109,24 +109,35 @@ int insertSortedLL(LinkedList *ll, int item)
 	ListNode *temp;
 	while (current != NULL)
 	{
-		// LinkedList에 이미 있는 값이면 return -1
+		// 중복한 값을 가지고 있는 Node가 있는 경우
 		if ((current->item) == item)
 		{
+			free(new);
 			return -1;
 		}
 		if ((current->item) > item)
 		{
 			(ll->size)++;
 			new->next = current;
-			temp->next = new;
+			// 0번지에 Node를 넣어야 하는 경우
+			if (idx == 0)
+			{
+				ll->head = new;
+			}
+			else
+			{
+				temp->next = new;
+			}
 
 			return idx;
 		}
+		// // 제일 마지막에 Node를 삽입하는 경우
 		temp = current;
 		current = current->next;
 		idx++;
 	}
 	temp->next = new;
+	(ll->size)++;
 	return (ll->size) - 1;
 }
 
