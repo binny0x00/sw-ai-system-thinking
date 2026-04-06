@@ -134,17 +134,11 @@ void moveOddItemsToBack(LinkedList *ll)
 	if (evenHead != NULL)
 	{
 		ll->head = evenHead;
-		if (oddHead != NULL)
-		{
-			evenTail->next = oddHead;
-		}
+		evenTail->next = oddHead;
 	}
 	else
 	{
-		if (oddHead != NULL)
-		{
-			ll->head = oddHead;
-		}
+		ll->head = oddHead;
 	}
 }
 
