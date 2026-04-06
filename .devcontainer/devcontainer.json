@@ -1,21 +1,33 @@
 {
+    // VS Code Dev Container의 표시 이름
     "name": "C Development Container",
+
+    // 사용할 Dockerfile 경로 (같은 .devcontainer 폴더 내)
     "dockerFile": "Dockerfile",
+
+    // 컨테이너 내에서 VS Code가 접속할 사용자 (Dockerfile에서 생성한 jungle)
     "remoteUser": "jungle",
+
     "customizations": {
         "vscode": {
+            // 컨테이너 시작 시 자동으로 설치할 VS Code 확장
             "extensions": [
-                "ms-vscode.cpptools-extension-pack",
-                "ms-vscode.cpptools"
-                // "ms-vscode.cmake-tools",
-                // "ms-vscode.makefile-tools"
+                "ms-vscode.cpptools-extension-pack", // C/C++ IntelliSense, 디버깅, 코드 탐색 묶음
+                "ms-vscode.cpptools"                 // C/C++ 언어 지원 (문법 강조, 자동완성)
+                // "ms-vscode.cmake-tools",          // CMake 빌드 지원 (현재 비활성화)
+                // "ms-vscode.makefile-tools"        // Makefile 지원 (현재 비활성화)
             ],
             "settings": {
+                // VS Code 통합 터미널의 기본 쉘을 bash로 설정
                 "terminal.integrated.defaultProfile.linux": "bash",
+
+                // C/C++ IntelliSense가 헤더 파일을 찾을 경로
                 "C_Cpp.default.includePath": [
-                    "/usr/include",
-                    "/usr/local/include"
+                    "/usr/include",       // 시스템 표준 헤더 (stdio.h, stdlib.h 등)
+                    "/usr/local/include"  // 로컬 설치 라이브러리 헤더
                 ],
+
+                // 사용할 gcc 컴파일러 경로 (IntelliSense 및 빌드에 사용)
                 "C_Cpp.default.compilerPath": "/usr/bin/gcc"
             }
         }
