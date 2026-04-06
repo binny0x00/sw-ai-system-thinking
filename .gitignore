@@ -1,2 +1,8 @@
 bin/*
 !bin/.gitkeep
+
+# Compiled binaries (no extension, same name as .c files)
+Data-Structures/**/*_LL
+Data-Structures/**/*_Stack
+Data-Structures/**/*_Queue
+Data-Structures/**/*_Tree
