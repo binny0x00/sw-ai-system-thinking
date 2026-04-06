@@ -113,32 +113,30 @@ void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 	}
 
 	ListNode *curr1 = ll1->head;
-	ListNode *curr2 = ll2->head; // 지역 포인터 변수
 
 	ListNode *temp1;
 	ListNode *temp2;
 
-	while (curr1 != NULL && curr2 != NULL) // 조건은 예상이 아니라 실제 일어날 이벤트로
+	while (curr1 != NULL && ll2->head != NULL) // 조건은 예상이 아니라 실제 일어날 이벤트로
 	{
 		temp1 = curr1->next;
-		temp2 = curr2;
+		temp2 = ll2->head;
 
 		ll2->head = ll2->head->next;
 		temp2->next = temp1;
 		curr1->next = temp2;
 
-		printf("Linked list 1: ");
-		printList(ll1);
+		// printf("Linked list 1: ");
+		// printList(ll1);
 
-		printf("Linked list 2: ");
-		printList(ll2);
-		putchar('\n');
+		// printf("Linked list 2: ");
+		// printList(ll2);
+		// putchar('\n');
 
 		ll1->size++;
 		ll2->size--;
 
-		curr1 = curr1->next->next;
-		curr2 = ll2->head;
+		curr1 = temp1;
 	}
 }
 
@@ -170,7 +168,7 @@ void removeAllItems(LinkedList *ll)
 	while (cur != NULL)
 	{
 		tmp = cur->next;
-		// free(cur);
+		free(cur);
 		cur = tmp;
 	}
 	ll->head = NULL;
